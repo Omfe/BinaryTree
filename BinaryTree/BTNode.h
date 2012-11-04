@@ -14,7 +14,6 @@
 @property (strong, nonatomic) BTNode *rightNode;
 @property (assign, nonatomic) NSInteger value;
 
-- (void)addNode:(NSInteger)value;
 - (id)initWithValue:(NSInteger)value;
 
 @end

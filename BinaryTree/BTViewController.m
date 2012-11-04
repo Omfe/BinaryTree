@@ -7,15 +7,15 @@
 //
 
 #import "BTViewController.h"
+#import "BTTree.h"
 
 @interface BTViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIButton *insertButton;
-@property (weak, nonatomic) IBOutlet UIButton *findButton;
-@property (weak, nonatomic) IBOutlet UIButton *iterateButton;
-@property (weak, nonatomic) IBOutlet UITextField *insertNodeWithValue;
+@property (weak, nonatomic) IBOutlet UITextField *nodeValueTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *iterateMethodPickerView;
+@property (weak, nonatomic) IBOutlet UITextView *iterateTextView;
 
+@property (strong, nonatomic) BTTree *binaryTree;
 
 @end
 
@@ -25,6 +25,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.binaryTree = [[BTTree alloc] init];
 }
 
 #pragma mark - UIPickerViewDataSource Methods
@@ -40,17 +41,38 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return 0; //los 3 metodos
+    switch (row) {
+        case 0:
+            return @"InOrder";
+        case 1:
+            return @"PreOrder";
+        case 2:
+            return @"PostOrder";
+        default:
+            return @"";
+    }
 }
 
 - (IBAction)insertButtonWasPressed:(id)sender
 {
-    
+    [self.binaryTree addNodeWithValue:[self.nodeValueTextField.text integerValue]];
 }
 
 - (IBAction)iterateButtonWasPressed:(id)sender
 {
-    
+    switch ([self.iterateMethodPickerView selectedRowInComponent:0]) {
+        case 0:
+            [self.binaryTree iterateInOrder];
+            break;
+        case 1:
+            [self.binaryTree iteratePreOrder];
+            break;
+        case 2:
+            [self.binaryTree iteratePostOrder];
+            break;
+        default:
+            break;
+    }
 }
 
 - (IBAction)findButtonWasPressed:(id)sender

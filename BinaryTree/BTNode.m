@@ -13,10 +13,13 @@
 
 @implementation BTNode
 
-- (void)addNode:(NSInteger)value
+- (id)initWithValue:(NSInteger)value
 {
-    
-    //rootNode = [metodo addNodeWithValue]
+    self = [super init];
+    if (self) {
+        _value = value;
+    }
+    return self;
 }
 
 @end

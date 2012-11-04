@@ -9,15 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "BTNode.h"
 
-@class BTNode;
-
-BTNode *rootNode = NULL;
-
 @interface BTTree : NSObject
 
-
-- (BTNode *)addNodeWithValue:(NSInteger)value withNode:(BTNode *) node;
-
-
+- (void)addNodeWithValue:(NSInteger)value;
+- (void)iterateInOrder;
+- (void)iteratePreOrder;
+- (void)iteratePostOrder;
 
 @end
