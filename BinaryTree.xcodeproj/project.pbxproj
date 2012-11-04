@@ -1,0 +1,315 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		99DF8AF51643048E00C26C37 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99DF8AF41643048E00C26C37 /* UIKit.framework */; };
+		99DF8AF71643048E00C26C37 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99DF8AF61643048E00C26C37 /* Foundation.framework */; };
+		99DF8AF91643048E00C26C37 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99DF8AF81643048E00C26C37 /* CoreGraphics.framework */; };
+		99DF8AFF1643048E00C26C37 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 99DF8AFD1643048E00C26C37 /* InfoPlist.strings */; };
+		99DF8B011643048E00C26C37 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DF8B001643048E00C26C37 /* main.m */; };
+		99DF8B051643048E00C26C37 /* BTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DF8B041643048E00C26C37 /* BTAppDelegate.m */; };
+		99DF8B071643048E00C26C37 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 99DF8B061643048E00C26C37 /* Default.png */; };
+		99DF8B091643048E00C26C37 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99DF8B081643048E00C26C37 /* Default@2x.png */; };
+		99DF8B0B1643048E00C26C37 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99DF8B0A1643048E00C26C37 /* Default-568h@2x.png */; };
+		99DF8B0E1643048E00C26C37 /* BTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DF8B0D1643048E00C26C37 /* BTViewController.m */; };
+		99DF8B111643048E00C26C37 /* BTViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99DF8B0F1643048E00C26C37 /* BTViewController.xib */; };
+		99DF8B211643092A00C26C37 /* BTNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DF8B201643092A00C26C37 /* BTNode.m */; };
+		99DF8B3E1646E36800C26C37 /* BTTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DF8B3D1646E36800C26C37 /* BTTree.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		99DF8AF01643048E00C26C37 /* BinaryTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BinaryTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		99DF8AF41643048E00C26C37 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		99DF8AF61643048E00C26C37 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		99DF8AF81643048E00C26C37 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		99DF8AFC1643048E00C26C37 /* BinaryTree-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BinaryTree-Info.plist"; sourceTree = "<group>"; };
+		99DF8AFE1643048E00C26C37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		99DF8B001643048E00C26C37 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		99DF8B021643048E00C26C37 /* BinaryTree-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BinaryTree-Prefix.pch"; sourceTree = "<group>"; };
+		99DF8B031643048E00C26C37 /* BTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTAppDelegate.h; sourceTree = "<group>"; };
+		99DF8B041643048E00C26C37 /* BTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTAppDelegate.m; sourceTree = "<group>"; };
+		99DF8B061643048E00C26C37 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		99DF8B081643048E00C26C37 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		99DF8B0A1643048E00C26C37 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		99DF8B0C1643048E00C26C37 /* BTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTViewController.h; sourceTree = "<group>"; };
+		99DF8B0D1643048E00C26C37 /* BTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTViewController.m; sourceTree = "<group>"; };
+		99DF8B101643048E00C26C37 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BTViewController.xib; sourceTree = "<group>"; };
+		99DF8B1F1643092A00C26C37 /* BTNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTNode.h; sourceTree = "<group>"; };
+		99DF8B201643092A00C26C37 /* BTNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTNode.m; sourceTree = "<group>"; };
+		99DF8B3C1646E36800C26C37 /* BTTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTTree.h; sourceTree = "<group>"; };
+		99DF8B3D1646E36800C26C37 /* BTTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTTree.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		99DF8AED1643048E00C26C37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99DF8AF51643048E00C26C37 /* UIKit.framework in Frameworks */,
+				99DF8AF71643048E00C26C37 /* Foundation.framework in Frameworks */,
+				99DF8AF91643048E00C26C37 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		99DF8AE51643048E00C26C37 = {
+			isa = PBXGroup;
+			children = (
+				99DF8AFA1643048E00C26C37 /* BinaryTree */,
+				99DF8AF31643048E00C26C37 /* Frameworks */,
+				99DF8AF11643048E00C26C37 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		99DF8AF11643048E00C26C37 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				99DF8AF01643048E00C26C37 /* BinaryTree.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		99DF8AF31643048E00C26C37 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				99DF8AF41643048E00C26C37 /* UIKit.framework */,
+				99DF8AF61643048E00C26C37 /* Foundation.framework */,
+				99DF8AF81643048E00C26C37 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		99DF8AFA1643048E00C26C37 /* BinaryTree */ = {
+			isa = PBXGroup;
+			children = (
+				99DF8B031643048E00C26C37 /* BTAppDelegate.h */,
+				99DF8B041643048E00C26C37 /* BTAppDelegate.m */,
+				99DF8B0C1643048E00C26C37 /* BTViewController.h */,
+				99DF8B0D1643048E00C26C37 /* BTViewController.m */,
+				99DF8B0F1643048E00C26C37 /* BTViewController.xib */,
+				99DF8B1F1643092A00C26C37 /* BTNode.h */,
+				99DF8B201643092A00C26C37 /* BTNode.m */,
+				99DF8B3C1646E36800C26C37 /* BTTree.h */,
+				99DF8B3D1646E36800C26C37 /* BTTree.m */,
+				99DF8AFB1643048E00C26C37 /* Supporting Files */,
+			);
+			path = BinaryTree;
+			sourceTree = "<group>";
+		};
+		99DF8AFB1643048E00C26C37 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				99DF8AFC1643048E00C26C37 /* BinaryTree-Info.plist */,
+				99DF8AFD1643048E00C26C37 /* InfoPlist.strings */,
+				99DF8B001643048E00C26C37 /* main.m */,
+				99DF8B021643048E00C26C37 /* BinaryTree-Prefix.pch */,
+				99DF8B061643048E00C26C37 /* Default.png */,
+				99DF8B081643048E00C26C37 /* Default@2x.png */,
+				99DF8B0A1643048E00C26C37 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		99DF8AEF1643048E00C26C37 /* BinaryTree */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99DF8B141643048E00C26C37 /* Build configuration list for PBXNativeTarget "BinaryTree" */;
+			buildPhases = (
+				99DF8AEC1643048E00C26C37 /* Sources */,
+				99DF8AED1643048E00C26C37 /* Frameworks */,
+				99DF8AEE1643048E00C26C37 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BinaryTree;
+			productName = BinaryTree;
+			productReference = 99DF8AF01643048E00C26C37 /* BinaryTree.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		99DF8AE71643048E00C26C37 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = BT;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Omar Gudino";
+			};
+			buildConfigurationList = 99DF8AEA1643048E00C26C37 /* Build configuration list for PBXProject "BinaryTree" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 99DF8AE51643048E00C26C37;
+			productRefGroup = 99DF8AF11643048E00C26C37 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				99DF8AEF1643048E00C26C37 /* BinaryTree */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		99DF8AEE1643048E00C26C37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99DF8AFF1643048E00C26C37 /* InfoPlist.strings in Resources */,
+				99DF8B071643048E00C26C37 /* Default.png in Resources */,
+				99DF8B091643048E00C26C37 /* Default@2x.png in Resources */,
+				99DF8B0B1643048E00C26C37 /* Default-568h@2x.png in Resources */,
+				99DF8B111643048E00C26C37 /* BTViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		99DF8AEC1643048E00C26C37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99DF8B011643048E00C26C37 /* main.m in Sources */,
+				99DF8B051643048E00C26C37 /* BTAppDelegate.m in Sources */,
+				99DF8B0E1643048E00C26C37 /* BTViewController.m in Sources */,
+				99DF8B211643092A00C26C37 /* BTNode.m in Sources */,
+				99DF8B3E1646E36800C26C37 /* BTTree.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		99DF8AFD1643048E00C26C37 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				99DF8AFE1643048E00C26C37 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		99DF8B0F1643048E00C26C37 /* BTViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				99DF8B101643048E00C26C37 /* en */,
+			);
+			name = BTViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		99DF8B121643048E00C26C37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		99DF8B131643048E00C26C37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		99DF8B151643048E00C26C37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BinaryTree/BinaryTree-Prefix.pch";
+				INFOPLIST_FILE = "BinaryTree/BinaryTree-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		99DF8B161643048E00C26C37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BinaryTree/BinaryTree-Prefix.pch";
+				INFOPLIST_FILE = "BinaryTree/BinaryTree-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		99DF8AEA1643048E00C26C37 /* Build configuration list for PBXProject "BinaryTree" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99DF8B121643048E00C26C37 /* Debug */,
+				99DF8B131643048E00C26C37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		99DF8B141643048E00C26C37 /* Build configuration list for PBXNativeTarget "BinaryTree" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99DF8B151643048E00C26C37 /* Debug */,
+				99DF8B161643048E00C26C37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 99DF8AE71643048E00C26C37 /* Project object */;
+}
