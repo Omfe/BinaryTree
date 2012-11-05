@@ -7,9 +7,12 @@
 //
 
 #import "BTNode.h"
-#import "BTTree.h"
 
-@class BTTree;
+@interface BTNode ()
+
+@property (weak, nonatomic) IBOutlet UILabel *valueLabel;
+
+@end
 
 @implementation BTNode
 
@@ -17,9 +20,27 @@
 {
     self = [super init];
     if (self) {
-        _value = value;
+        self.value = value;
     }
     return self;
+}
+
+- (void)setValue:(NSInteger)value
+{
+    if (_value != value) {
+        _value = value;
+        self.valueLabel.text = [NSString stringWithFormat:@"%i", value];
+    }
+}
+
+- (id<PSTreeGraphModelNode>)parentModelNode
+{
+    return self.parentNode;
+}
+
+- (NSArray *)childModelNodes
+{
+    return [NSArray arrayWithObjects:self.leftNode, self.rightNode, nil];
 }
 
 @end

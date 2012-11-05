@@ -11,6 +11,7 @@
 
 @interface BTViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *treeGraphView;
 @property (weak, nonatomic) IBOutlet UITextField *nodeValueTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *iterateMethodPickerView;
 @property (weak, nonatomic) IBOutlet UITextView *iterateTextView;

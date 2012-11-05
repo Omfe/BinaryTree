@@ -45,14 +45,17 @@
 #pragma mark - Private Methods
 - (BTNode *)addNodeWithValue:(NSInteger)value withNode:(BTNode *)node
 {
+    BTNode *newNode;
+    
     if (node == NULL) {
         return [[BTNode alloc] initWithValue:value];
     }
     
+    newNode = [[BTNode alloc] initWithValue:value];
     if (node.value < value) {
-        node.rightNode = [self addNodeWithValue:value withNode:node.rightNode];
+        node.rightNode = [self addNodeWithValue:value withNode:newNode];
     } else {
-        node.leftNode = [self addNodeWithValue:value withNode:node.leftNode];
+        node.leftNode = [self addNodeWithValue:value withNode:newNode];
     }
     
     return nil;
