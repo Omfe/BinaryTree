@@ -29,17 +29,23 @@
 
 - (void)iterateInOrder
 {
-    
+    if (self.rootNode != NULL) {
+        [self iterateInOrder:self.rootNode];
+    }
 }
 
 - (void)iteratePreOrder
 {
-    
+    if (self.rootNode != NULL) {
+        [self iteratePreOrder:self.rootNode];
+    }
 }
 
 - (void)iteratePostOrder
 {
-    
+    if (self.rootNode != NULL) {
+        [self iteratePostOrder:self.rootNode];
+    }
 }
 
 #pragma mark - Private Methods
@@ -51,26 +57,41 @@
     
     if (node.value < value) {
         node.rightNode = [self addNodeWithValue:value withNode:node.rightNode];
+        return node;
     } else {
         node.leftNode = [self addNodeWithValue:value withNode:node.leftNode];
+        return node;
     }
     
-    return nil;
 }
 
 - (void)iterateInOrder:(BTNode *)currentNode
 {
-    
+    if (currentNode != NULL) {
+        [self iterateInOrder:currentNode.leftNode];
+        NSLog(@"%i", currentNode.value);
+        [self iterateInOrder:currentNode.rightNode];
+    }
 }
 
 - (void)iteratePreOrder:(BTNode *)currentNode
 {
-    
+    if (currentNode != NULL) {
+        NSLog(@"%i", currentNode.value);
+        [self iteratePreOrder:currentNode.leftNode];
+        [self iteratePreOrder:currentNode.rightNode];
+    }
 }
 
 - (void)iteratePostOrder:(BTNode *)currentNode
 {
-    
+    if (currentNode != NULL) {
+        [self iteratePostOrder:currentNode.leftNode];
+        [self iteratePostOrder:currentNode.rightNode];
+        NSLog(@"%i", currentNode.value);
+    }
 }
+
+
 
 @end
