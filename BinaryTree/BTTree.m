@@ -48,6 +48,28 @@
     }
 }
 
+- (Boolean)findNodeWithValue:(NSInteger)value
+{
+    if (self.rootNode == NULL) {
+        return false;
+    } else{
+        return [self findNode:self.rootNode withValue:value];
+    }
+}
+
+- (Boolean)findNode:(BTNode *)node withValue:(NSInteger)value
+{
+    if (node == NULL) {
+        return false;
+    } else if (node.value == value){
+        return true;
+    } else if (node.value <= value){
+        return [self findNode:node.rightNode withValue:value];
+    } else {
+        return [self findNode:node.leftNode withValue:value];
+    }
+}
+
 #pragma mark - Private Methods
 - (BTNode *)addNodeWithValue:(NSInteger)value withNode:(BTNode *)node
 {
@@ -91,7 +113,5 @@
         NSLog(@"%i", currentNode.value);
     }
 }
-
-
 
 @end

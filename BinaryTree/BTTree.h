@@ -15,5 +15,7 @@
 - (void)iterateInOrder;
 - (void)iteratePreOrder;
 - (void)iteratePostOrder;
+- (Boolean)findNodeWithValue:(NSInteger)value;
+- (Boolean)findNode:(BTNode *)node withValue:(NSInteger)value;
 
 @end

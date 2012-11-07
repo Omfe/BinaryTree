@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *nodeValueTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *iterateMethodPickerView;
 @property (weak, nonatomic) IBOutlet UITextView *iterateTextView;
+@property (weak, nonatomic) IBOutlet UILabel *findNodeTextLabel;
 
 @property (strong, nonatomic) BTTree *binaryTree;
 
@@ -77,7 +78,11 @@
 
 - (IBAction)findButtonWasPressed:(id)sender
 {
-    
+    if ([self.binaryTree findNodeWithValue:[self.nodeValueTextField.text integerValue]] == TRUE) {
+        self.findNodeTextLabel.text = @"Este Nodo si existe en tu Arbol!";
+    } else {
+        self.findNodeTextLabel.text = @"Este Nodo no existe en tu Arbol";
+    }
 }
 
 @end
