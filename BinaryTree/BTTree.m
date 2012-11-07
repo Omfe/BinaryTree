@@ -73,6 +73,8 @@
 #pragma mark - Private Methods
 - (BTNode *)addNodeWithValue:(NSInteger)value withNode:(BTNode *)node
 {
+    BTNode *newNode;
+    
     if (node == NULL) {
         return [[BTNode alloc] initWithValue:value];
     }
