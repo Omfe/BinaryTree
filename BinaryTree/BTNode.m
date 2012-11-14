@@ -33,10 +33,10 @@
     }
 }
 
-- (id<PSTreeGraphModelNode>)parentModelNode
-{
-    return self.parentNode;
-}
+//- (id<PSTreeGraphModelNode>)parentModelNode
+//{
+//    return self.parentNode;
+//}
 
 - (NSArray *)childModelNodes
 {

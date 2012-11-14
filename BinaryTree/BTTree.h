@@ -12,10 +12,12 @@
 @interface BTTree : NSObject
 
 - (void)addNodeWithValue:(NSInteger)value;
-- (void)iterateInOrder;
-- (void)iteratePreOrder;
-- (void)iteratePostOrder;
+- (NSString *)iterateInOrder;
+- (NSString *)iteratePreOrder;
+- (NSString *)iteratePostOrder;
 - (Boolean)findNodeWithValue:(NSInteger)value;
 - (Boolean)findNode:(BTNode *)node withValue:(NSInteger)value;
+- (Boolean)deleteNodeWithValue:(NSInteger)value;
+- (NSInteger)treeHeightWithNode:(BTNode *)node;
 
 @end

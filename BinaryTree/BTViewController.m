@@ -64,7 +64,7 @@
 {
     switch ([self.iterateMethodPickerView selectedRowInComponent:0]) {
         case 0:
-            [self.binaryTree iterateInOrder];
+            self.iterateTextView.text = [self.binaryTree iterateInOrder];
             break;
         case 1:
             [self.binaryTree iteratePreOrder];
