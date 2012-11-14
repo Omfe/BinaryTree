@@ -32,8 +32,7 @@
 - (NSString *)iterateInOrder
 {
     if (self.rootNode != nil) {
-        [self iterateInOrder:self.rootNode];
-        return  self.iterateInOrder;
+        return [self iterateInOrder:self.rootNode];
     }
     return  @"";
 }
@@ -41,8 +40,7 @@
 - (NSString *)iteratePreOrder
 {
     if (self.rootNode != nil) {
-        [self iteratePreOrder:self.rootNode];
-        return  self.iterateInOrder;
+        return [self iteratePreOrder:self.rootNode];
     }
     return  @"";
 }
@@ -50,8 +48,7 @@
 - (NSString *)iteratePostOrder
 {
     if (self.rootNode != nil) {
-        [self iteratePostOrder:self.rootNode];
-        return  self.iterateInOrder;
+        return [self iteratePostOrder:self.rootNode];
     }
     return  @"";
 }
