@@ -17,7 +17,7 @@
 - (NSString *)iterateInOrder:(BTNode *)currentNode;
 - (NSString *)iteratePreOrder:(BTNode *)currentNode;
 - (NSString *)iteratePostOrder:(BTNode *)currentNode;
-- (Boolean) deleteNode:(BTNode *)node withValue:(NSInteger)value;
+- (BOOL) deleteNode:(BTNode *)node withValue:(NSInteger)value;
 - (void) deleteAndMoveNode:(BTNode *)node;
 
 @end
@@ -31,38 +31,43 @@
 
 - (NSString *)iterateInOrder
 {
-    if (self.rootNode != NULL) {
+    if (self.rootNode != nil) {
         [self iterateInOrder:self.rootNode];
+        return  self.iterateInOrder;
     }
-    return  self.iterateInOrder;
+    return  @"";
 }
 
 - (NSString *)iteratePreOrder
 {
-    if (self.rootNode != NULL) {
+    if (self.rootNode != nil) {
         [self iteratePreOrder:self.rootNode];
+        return  self.iterateInOrder;
     }
+    return  @"";
 }
 
 - (NSString *)iteratePostOrder
 {
-    if (self.rootNode != NULL) {
+    if (self.rootNode != nil) {
         [self iteratePostOrder:self.rootNode];
+        return  self.iterateInOrder;
     }
+    return  @"";
 }
 
-- (Boolean)findNodeWithValue:(NSInteger)value
+- (BOOL)findNodeWithValue:(NSInteger)value
 {
-    if (self.rootNode == NULL) {
+    if (self.rootNode == nil) {
         return false;
     } else{
         return [self findNode:self.rootNode withValue:value];
     }
 }
 
-- (Boolean)findNode:(BTNode *)node withValue:(NSInteger)value
+- (BOOL)findNode:(BTNode *)node withValue:(NSInteger)value
 {
-    if (node == NULL) {
+    if (node == nil) {
         return false;
     } else if (node.value == value){
         return true;
@@ -73,7 +78,7 @@
     }
 }
 
-- (Boolean)deleteNodeWithValue:(NSInteger)value
+- (BOOL)deleteNodeWithValue:(NSInteger)value
 {
     if (![self findNodeWithValue:value]) {
         return NO;
@@ -84,7 +89,7 @@
 
 - (NSInteger)treeHeightWithNode:(BTNode *)node
 {
-    if (node == NULL) {
+    if (node == nil) {
         return 0;
     } else{
         if ([self treeHeightWithNode:node.rightNode] > [self treeHeightWithNode:node.leftNode]) {
@@ -100,7 +105,7 @@
 {
     //BTNode *newNode;
     
-    if (node == NULL) {
+    if (node == nil) {
         return [[BTNode alloc] initWithValue:value];
     }
     
@@ -119,7 +124,7 @@
     NSMutableString *iteratedListString;
     iteratedListString = [NSMutableString string];
     
-    if (currentNode != NULL) {
+    if (currentNode != nil) {
         [self iterateInOrder:currentNode.leftNode];
         [iteratedListString appendFormat:@"%d\n", currentNode.value];
         //NSLog(@"%i", currentNode.value);
@@ -133,7 +138,7 @@
     NSMutableString *iteratedListString;
     iteratedListString = [NSMutableString string];
     
-    if (currentNode != NULL) {
+    if (currentNode != nil) {
         //NSLog(@"%i", currentNode.value);
         [iteratedListString appendFormat:@"%d\n", currentNode.value];
         [self iteratePreOrder:currentNode.leftNode];
@@ -147,7 +152,7 @@
     NSMutableString *iteratedListString;
     iteratedListString = [NSMutableString string];
     
-    if (currentNode != NULL) {
+    if (currentNode != nil) {
         [self iteratePostOrder:currentNode.leftNode];
         [self iteratePostOrder:currentNode.rightNode];
         [iteratedListString appendFormat:@"%d\n", currentNode.value];
@@ -156,7 +161,7 @@
     return iteratedListString;
 }
 
-- (Boolean)deleteNode:(BTNode *)node withValue:(NSInteger)value
+- (BOOL)deleteNode:(BTNode *)node withValue:(NSInteger)value
 {
     if (node.value == value) {
         //borrar y recorrer

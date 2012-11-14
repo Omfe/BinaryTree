@@ -15,9 +15,9 @@
 - (NSString *)iterateInOrder;
 - (NSString *)iteratePreOrder;
 - (NSString *)iteratePostOrder;
-- (Boolean)findNodeWithValue:(NSInteger)value;
-- (Boolean)findNode:(BTNode *)node withValue:(NSInteger)value;
-- (Boolean)deleteNodeWithValue:(NSInteger)value;
+- (BOOL)findNodeWithValue:(NSInteger)value;
+- (BOOL)findNode:(BTNode *)node withValue:(NSInteger)value;
+- (BOOL)deleteNodeWithValue:(NSInteger)value;
 - (NSInteger)treeHeightWithNode:(BTNode *)node;
 
 @end
