@@ -24,9 +24,10 @@
 
 @implementation BTTree
 
-- (void)addNodeWithValue:(NSInteger)value
+- (NSInteger)addNodeWithValue:(NSInteger)value
 {
     self.rootNode = [self addNodeWithValue:value withNode:self.rootNode];
+    return [self treeHeightWithNode:self.rootNode];
 }
 
 - (NSString *)iterateInOrder

@@ -58,7 +58,8 @@
 
 - (IBAction)insertButtonWasPressed:(id)sender
 {
-    [self.binaryTree addNodeWithValue:[self.nodeValueTextField.text integerValue]];
+    self.treeHeightTextLabel.text =
+    [NSString stringWithFormat:@"%i", [self.binaryTree addNodeWithValue:[self.nodeValueTextField.text integerValue]]];
 }
 
 - (IBAction)iterateButtonWasPressed:(id)sender

@@ -11,7 +11,7 @@
 
 @interface BTTree : NSObject
 
-- (void)addNodeWithValue:(NSInteger)value;
+- (NSInteger)addNodeWithValue:(NSInteger)value;
 - (NSString *)iterateInOrder;
 - (NSString *)iteratePreOrder;
 - (NSString *)iteratePostOrder;
