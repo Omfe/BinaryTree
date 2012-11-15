@@ -33,14 +33,4 @@
     }
 }
 
-//- (id<PSTreeGraphModelNode>)parentModelNode
-//{
-//    return self.parentNode;
-//}
-
-- (NSArray *)childModelNodes
-{
-    return [NSArray arrayWithObjects:self.leftNode, self.rightNode, nil];
-}
-
 @end

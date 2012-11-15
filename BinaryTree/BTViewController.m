@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *iterateMethodPickerView;
 @property (weak, nonatomic) IBOutlet UITextView *iterateTextView;
 @property (weak, nonatomic) IBOutlet UILabel *findNodeTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *treeHeightTextLabel;
 
 @property (strong, nonatomic) BTTree *binaryTree;
 
@@ -67,10 +68,10 @@
             self.iterateTextView.text = [self.binaryTree iterateInOrder];
             break;
         case 1:
-            [self.binaryTree iteratePreOrder];
+            self.iterateTextView.text = [self.binaryTree iteratePreOrder];
             break;
         case 2:
-            [self.binaryTree iteratePostOrder];
+            self.iterateTextView.text = [self.binaryTree iteratePostOrder];
             break;
         default:
             break;

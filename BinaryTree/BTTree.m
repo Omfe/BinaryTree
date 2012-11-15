@@ -95,6 +95,7 @@
             return [self treeHeightWithNode:node.leftNode] + 1;
         }
     }
+    //[iteratedListString appendFormat:@"%d\n", currentNode.value];
 }
 
 #pragma mark - Private Methods
@@ -122,10 +123,9 @@
     iteratedListString = [NSMutableString string];
     
     if (currentNode != nil) {
-        [self iterateInOrder:currentNode.leftNode];
+        [iteratedListString appendString:[self iterateInOrder:currentNode.leftNode]];
         [iteratedListString appendFormat:@"%d\n", currentNode.value];
-        //NSLog(@"%i", currentNode.value);
-        [self iterateInOrder:currentNode.rightNode];
+        [iteratedListString appendString:[self iterateInOrder:currentNode.rightNode]];
     }
     return iteratedListString;
 }
@@ -138,8 +138,8 @@
     if (currentNode != nil) {
         //NSLog(@"%i", currentNode.value);
         [iteratedListString appendFormat:@"%d\n", currentNode.value];
-        [self iteratePreOrder:currentNode.leftNode];
-        [self iteratePreOrder:currentNode.rightNode];
+        [iteratedListString appendString:[self iterateInOrder:currentNode.leftNode]];
+        [iteratedListString appendString:[self iterateInOrder:currentNode.rightNode]];
     }
     return iteratedListString;
 }
@@ -150,8 +150,8 @@
     iteratedListString = [NSMutableString string];
     
     if (currentNode != nil) {
-        [self iteratePostOrder:currentNode.leftNode];
-        [self iteratePostOrder:currentNode.rightNode];
+        [iteratedListString appendString:[self iterateInOrder:currentNode.leftNode]];
+        [iteratedListString appendString:[self iterateInOrder:currentNode.rightNode]];
         [iteratedListString appendFormat:@"%d\n", currentNode.value];
         //NSLog(@"%i", currentNode.value);
     }
