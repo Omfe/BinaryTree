@@ -17,17 +17,19 @@
 - (NSString *)iterateInOrder:(BTNode *)currentNode;
 - (NSString *)iteratePreOrder:(BTNode *)currentNode;
 - (NSString *)iteratePostOrder:(BTNode *)currentNode;
-- (BOOL) deleteNode:(BTNode *)node withValue:(NSInteger)value;
-- (void) deleteAndMoveNode:(BTNode *)node;
+- (BOOL)nodeExists:(BTNode *)node withValue:(NSInteger)value;
+- (BOOL)deleteNode:(BTNode *)node withValue:(NSInteger)value;
+- (void)deleteAndMoveNode:(BTNode *)node;
+- (NSInteger)treeHeightWithNode:(BTNode *)node;
 
 @end
 
 @implementation BTTree
 
-- (NSInteger)addNodeWithValue:(NSInteger)value
+- (void)addNodeWithValue:(NSInteger)value
 {
     self.rootNode = [self addNodeWithValue:value withNode:self.rootNode];
-    return [self treeHeightWithNode:self.rootNode];
+    _treeHeight = [self treeHeightWithNode:self.rootNode];
 }
 
 - (NSString *)iterateInOrder
@@ -54,56 +56,29 @@
     return  @"";
 }
 
-- (BOOL)findNodeWithValue:(NSInteger)value
+- (BOOL)nodeExistsWithValue:(NSInteger)value
 {
     if (self.rootNode == nil) {
         return false;
-    } else{
-        return [self findNode:self.rootNode withValue:value];
-    }
-}
-
-- (BOOL)findNode:(BTNode *)node withValue:(NSInteger)value
-{
-    if (node == nil) {
-        return false;
-    } else if (node.value == value){
-        return true;
-    } else if (node.value <= value){
-        return [self findNode:node.rightNode withValue:value];
     } else {
-        return [self findNode:node.leftNode withValue:value];
+        return [self nodeExists:self.rootNode withValue:value];
     }
 }
 
 - (BOOL)deleteNodeWithValue:(NSInteger)value
 {
-    if (![self findNodeWithValue:value]) {
+    if (![self nodeExistsWithValue:value]) {
         return NO;
     } else {
         return [self deleteNode:self.rootNode withValue:value];
     }
 }
 
-- (NSInteger)treeHeightWithNode:(BTNode *)node
-{
-    if (node == nil) {
-        return 0;
-    } else{
-        if ([self treeHeightWithNode:node.rightNode] > [self treeHeightWithNode:node.leftNode]) {
-            return [self treeHeightWithNode:node.rightNode] + 1;
-        } else {
-            return [self treeHeightWithNode:node.leftNode] + 1;
-        }
-    }
-    //[iteratedListString appendFormat:@"%d\n", currentNode.value];
-}
+
 
 #pragma mark - Private Methods
 - (BTNode *)addNodeWithValue:(NSInteger)value withNode:(BTNode *)node
 {
-    //BTNode *newNode;
-    
     if (node == nil) {
         return [[BTNode alloc] initWithValue:value];
     }
@@ -115,7 +90,6 @@
         node.leftNode = [self addNodeWithValue:value withNode:node.leftNode];
         return node;
     }
-    
 }
 
 - (NSString *)iterateInOrder:(BTNode *)currentNode
@@ -137,7 +111,6 @@
     iteratedListString = [NSMutableString string];
     
     if (currentNode != nil) {
-        //NSLog(@"%i", currentNode.value);
         [iteratedListString appendFormat:@"%d\n", currentNode.value];
         [iteratedListString appendString:[self iterateInOrder:currentNode.leftNode]];
         [iteratedListString appendString:[self iterateInOrder:currentNode.rightNode]];
@@ -154,9 +127,21 @@
         [iteratedListString appendString:[self iterateInOrder:currentNode.leftNode]];
         [iteratedListString appendString:[self iterateInOrder:currentNode.rightNode]];
         [iteratedListString appendFormat:@"%d\n", currentNode.value];
-        //NSLog(@"%i", currentNode.value);
     }
     return iteratedListString;
+}
+
+- (BOOL)nodeExists:(BTNode *)node withValue:(NSInteger)value
+{
+    if (node == nil) {
+        return false;
+    } else if (node.value == value) {
+        return true;
+    } else if (node.value <= value) {
+        return [self nodeExists:node.rightNode withValue:value];
+    } else {
+        return [self nodeExists:node.leftNode withValue:value];
+    }
 }
 
 - (BOOL)deleteNode:(BTNode *)node withValue:(NSInteger)value
@@ -164,11 +149,9 @@
     if (node.value == value) {
         //borrar y recorrer
         return YES;
-    }
-    else if (node.value <= value) {
+    } else if (node.value <= value) {
         return [self deleteNode:node.rightNode withValue:value];
-    }
-    else {
+    } else {
         return [self deleteNode:node.leftNode withValue:value];
     }
 }
@@ -176,6 +159,19 @@
 - (void)deleteAndMoveNode:(BTNode *)node
 {
     
+}
+
+- (NSInteger)treeHeightWithNode:(BTNode *)node
+{
+    if (!node) {
+        return 0;
+    }
+    
+    if ([self treeHeightWithNode:node.rightNode] > [self treeHeightWithNode:node.leftNode]) {
+        return [self treeHeightWithNode:node.rightNode] + 1;
+    } else {
+        return [self treeHeightWithNode:node.leftNode] + 1;
+    }
 }
 
 @end

@@ -11,13 +11,13 @@
 
 @interface BTTree : NSObject
 
-- (NSInteger)addNodeWithValue:(NSInteger)value;
+@property (nonatomic, assign, readonly) NSInteger treeHeight;
+
+- (void)addNodeWithValue:(NSInteger)value;
 - (NSString *)iterateInOrder;
 - (NSString *)iteratePreOrder;
 - (NSString *)iteratePostOrder;
-- (BOOL)findNodeWithValue:(NSInteger)value;
-- (BOOL)findNode:(BTNode *)node withValue:(NSInteger)value;
+- (BOOL)nodeExistsWithValue:(NSInteger)value;
 - (BOOL)deleteNodeWithValue:(NSInteger)value;
-- (NSInteger)treeHeightWithNode:(BTNode *)node;
 
 @end
