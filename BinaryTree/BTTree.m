@@ -96,7 +96,6 @@
             return [self treeHeightWithNode:node.leftNode] + 1;
         }
     }
-    //[iteratedListString appendFormat:@"%d\n", currentNode.value];
 }
 
 #pragma mark - Private Methods
