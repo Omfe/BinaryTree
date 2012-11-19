@@ -9,7 +9,7 @@
 #import "BTViewController.h"
 #import "BTTree.h"
 
-@interface BTViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface BTViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *treeGraphView;
 @property (weak, nonatomic) IBOutlet UITextField *nodeValueTextField;
@@ -20,16 +20,18 @@
 
 @property (strong, nonatomic) BTTree *binaryTree;
 
+- (BOOL)isStringIntegerValue:(NSString *)string;
+
 @end
 
 @implementation BTViewController
-
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.binaryTree = [[BTTree alloc] init];
 }
+
 
 #pragma mark - UIPickerViewDataSource Methods
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -56,10 +58,30 @@
     }
 }
 
+
+#pragma mark - UITextFieldDelegate Methods
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if ([string isEqualToString:@""]) {
+        return YES;
+    }
+    
+    if (![self isStringIntegerValue:string]) {
+        return NO;
+    }
+    return YES;
+}
+
+
+#pragma mark - Action Methods
 - (IBAction)insertButtonWasPressed:(id)sender
 {
-    self.treeHeightTextLabel.text =
-    [NSString stringWithFormat:@"%i", [self.binaryTree addNodeWithValue:[self.nodeValueTextField.text integerValue]]];
+    if (self.nodeValueTextField.text.length == 0) {
+        return;
+    }
+    
+    [self.binaryTree addNodeWithValue:[self.nodeValueTextField.text integerValue]];
+    self.treeHeightTextLabel.text = [NSString stringWithFormat:@"Tree Height: %i", self.binaryTree.treeHeight];
 }
 
 - (IBAction)iterateButtonWasPressed:(id)sender
@@ -81,11 +103,25 @@
 
 - (IBAction)findButtonWasPressed:(id)sender
 {
-    if ([self.binaryTree findNodeWithValue:[self.nodeValueTextField.text integerValue]] == TRUE) {
+    if (self.nodeValueTextField.text.length == 0) {
+        return;
+    }
+    
+    if ([self.binaryTree nodeExistsWithValue:[self.nodeValueTextField.text integerValue]]) {
         self.findNodeTextLabel.text = @"Este Nodo si existe en tu Arbol!";
     } else {
         self.findNodeTextLabel.text = @"Este Nodo no existe en tu Arbol";
     }
+}
+
+
+#pragma mark - Private Methods
+- (BOOL)isStringIntegerValue:(NSString *)string
+{
+    NSScanner *scanner;
+    
+    scanner = [NSScanner scannerWithString:string];
+    return [scanner scanInteger:nil];
 }
 
 @end
