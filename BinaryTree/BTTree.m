@@ -11,24 +11,40 @@
 
 @interface BTTree ()
 
-@property (strong, nonatomic) BTNode *rootNode;
+@property (nonatomic, strong) BTNode *rootNode;
+@property (nonatomic, assign) BTTreeNodeValueType valueType;
 
 - (BTNode *)addNodeWithValue:(NSInteger)value withNode:(BTNode *)node;
 - (NSString *)iterateInOrder:(BTNode *)currentNode;
 - (NSString *)iteratePreOrder:(BTNode *)currentNode;
 - (NSString *)iteratePostOrder:(BTNode *)currentNode;
 - (BOOL)nodeExists:(BTNode *)node withValue:(NSInteger)value;
-- (BOOL)deleteNode:(BTNode *)node withValue:(NSInteger)value;
-- (void)deleteAndMoveNode:(BTNode *)node;
+- (BOOL)deleteNode:(BTNode *)node withValue:(NSInteger)value andParentNode:(BTNode *)parentNode;
+- (void)deleteAndMoveNode:(BTNode *)node withParentNode:(BTNode *)parentNode;
+- (void)moveChildNode:(BTNode *)childNode toParentNode:(BTNode *)parentNode fromNode:(BTNode *)node;
 - (NSInteger)treeHeightWithNode:(BTNode *)node;
 - (void)balanceTreeWithNode:(BTNode *)node;
+- (BOOL)isValueValidType:(id)value;
 
 @end
 
 @implementation BTTree
 
+/*- (id)initWithNodeValueType:(BTTreeNodeValueType)valueType
+{
+    self = [super init];
+    if (self) {
+        self.valueType = valueType;
+    }
+    return self;
+}*/
+
 - (void)addNodeWithValue:(NSInteger)value
 {
+    /*if (![self isValueValidType:value]) {
+        return;
+    }*/
+    
     self.rootNode = [self addNodeWithValue:value withNode:self.rootNode];
     [self balanceTreeWithNode:self.rootNode];
     _treeHeight = [self treeHeightWithNode:self.rootNode];
@@ -72,7 +88,7 @@
     if (![self nodeExistsWithValue:value]) {
         return NO;
     } else {
-        return [self deleteNode:self.rootNode withValue:value];
+        return [self deleteNode:self.rootNode withValue:value andParentNode:nil];
     }
 }
 
@@ -146,58 +162,116 @@
     }
 }
 
-- (BOOL)deleteNode:(BTNode *)node withValue:(NSInteger)value
+- (BOOL)deleteNode:(BTNode *)node withValue:(NSInteger)value andParentNode:(BTNode *)parentNode
 {
     if (node.value == value) {
-        //borrar y recorrer
+        [self deleteAndMoveNode:node withParentNode:parentNode];
         return YES;
     } else if (node.value <= value) {
-        return [self deleteNode:node.rightNode withValue:value];
+        return [self deleteNode:node.rightNode withValue:value andParentNode:node];
     } else {
-        return [self deleteNode:node.leftNode withValue:value];
+        return [self deleteNode:node.leftNode withValue:value andParentNode:node];
     }
 }
 
-- (void)deleteAndMoveNode:(BTNode *)node
+- (void)deleteAndMoveNode:(BTNode *)node withParentNode:(BTNode *)parentNode
 {
+    if (node.rightNode && !node.leftNode) {
+        [self moveChildNode:node.rightNode toParentNode:parentNode fromNode:node];
+    } else if (!node.rightNode && node.leftNode) {
+        [self moveChildNode:node.leftNode toParentNode:parentNode fromNode:node];
+    } else if (node.rightNode && node.leftNode) {
+        [self moveChildNode:nil toParentNode:parentNode fromNode:node];
+    }
     
+    node = nil;
+}
+
+- (void)moveChildNode:(BTNode *)childNode toParentNode:(BTNode *)parentNode fromNode:(BTNode *)node
+{
+    BTNode *child;
+    BTNode *grandChild;
+    
+    if (!parentNode) {
+        return;
+    }
+    
+    if (parentNode && parentNode.leftNode == node) {
+        if (child) {
+            parentNode.leftNode = childNode;
+            return;
+        }
+        
+        child = node.leftNode;
+        grandChild = child.rightNode;
+        while (grandChild.rightNode) {
+            grandChild = grandChild.rightNode;
+        }
+        
+        parentNode.leftNode = grandChild;
+        grandChild.leftNode = child;
+        grandChild.rightNode = node.rightNode;
+    } else {
+        if (child) {
+            parentNode.rightNode = childNode;
+            return;
+        }
+        
+        child = node.rightNode;
+        grandChild = child.leftNode;
+        while (grandChild.leftNode) {
+            grandChild = grandChild.leftNode;
+        }
+        
+        parentNode.rightNode = grandChild;
+        grandChild.rightNode = child;
+        grandChild.leftNode = node.leftNode;
+    }
 }
 
 - (NSInteger)treeHeightWithNode:(BTNode *)node
 {
+    NSInteger leftHeight;
+    NSInteger rightHeight;
+    
     if (!node) {
         return 0;
     }
     
-    if ([self treeHeightWithNode:node.rightNode] > [self treeHeightWithNode:node.leftNode]) {
-        return [self treeHeightWithNode:node.rightNode] + 1;
+    leftHeight = [self treeHeightWithNode:node.leftNode];
+    rightHeight = [self treeHeightWithNode:node.rightNode];
+    
+    if (rightHeight > leftHeight) {
+        return rightHeight + 1;
     } else {
-        return [self treeHeightWithNode:node.leftNode] + 1;
+        return leftHeight + 1;
     }
 }
 
 - (void)balanceTreeWithNode:(BTNode *)node
 {
     BTNode *currentNode;
-    BTNode *rootNode = self.rootNode;
     NSInteger leftHeight = [self treeHeightWithNode:self.rootNode.leftNode];
     NSInteger rightHeight = [self treeHeightWithNode:self.rootNode.rightNode];
     
     if (leftHeight >= rightHeight + 2) {
-        node = currentNode.leftNode;
-        rootNode = node;
-        node.rightNode = currentNode.leftNode;
-        currentNode = node.rightNode;
-       //[self balanceTreeWithNode:node];
+        currentNode = node.leftNode;
+        node.leftNode = nil;
+        self.rootNode = currentNode;
+        currentNode.rightNode = node;
     }
     
     if (rightHeight >= leftHeight + 2) {
         currentNode = node.rightNode;
-        rootNode = node;
-        currentNode.leftNode = node.rightNode;
-        node = currentNode.leftNode;
-        //[self balanceTreeWithNode:node];
+        node.rightNode = nil;
+        self.rootNode = currentNode;
+        currentNode.leftNode = node;
     }
+}
+
+- (BOOL)isValueValidType:(id)value
+{
+    return YES;
 }
 
 @end
