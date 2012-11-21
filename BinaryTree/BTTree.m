@@ -188,7 +188,7 @@
         rootNode = node;
         node.rightNode = currentNode.leftNode;
         currentNode = node.rightNode;
-       [self balanceTreeWithNode:node];
+       //[self balanceTreeWithNode:node];
     }
     
     if (rightHeight >= leftHeight + 2) {
@@ -196,7 +196,7 @@
         rootNode = node;
         currentNode.leftNode = node.rightNode;
         node = currentNode.leftNode;
-        [self balanceTreeWithNode:node];
+        //[self balanceTreeWithNode:node];
     }
 }
 
