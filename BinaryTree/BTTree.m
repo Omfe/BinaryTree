@@ -21,6 +21,7 @@
 - (BOOL)deleteNode:(BTNode *)node withValue:(NSInteger)value;
 - (void)deleteAndMoveNode:(BTNode *)node;
 - (NSInteger)treeHeightWithNode:(BTNode *)node;
+- (void)balanceTreeWithNode:(BTNode *)node;
 
 @end
 
@@ -29,6 +30,7 @@
 - (void)addNodeWithValue:(NSInteger)value
 {
     self.rootNode = [self addNodeWithValue:value withNode:self.rootNode];
+    [self balanceTreeWithNode:self.rootNode];
     _treeHeight = [self treeHeightWithNode:self.rootNode];
 }
 
@@ -171,6 +173,30 @@
         return [self treeHeightWithNode:node.rightNode] + 1;
     } else {
         return [self treeHeightWithNode:node.leftNode] + 1;
+    }
+}
+
+- (void)balanceTreeWithNode:(BTNode *)node
+{
+    BTNode *currentNode;
+    BTNode *rootNode = self.rootNode;
+    NSInteger leftHeight = [self treeHeightWithNode:self.rootNode.leftNode];
+    NSInteger rightHeight = [self treeHeightWithNode:self.rootNode.rightNode];
+    
+    if (leftHeight >= rightHeight + 2) {
+        node = currentNode.leftNode;
+        rootNode = node;
+        node.rightNode = currentNode.leftNode;
+        currentNode = node.rightNode;
+       [self balanceTreeWithNode:node];
+    }
+    
+    if (rightHeight >= leftHeight + 2) {
+        currentNode = node.rightNode;
+        rootNode = node;
+        currentNode.leftNode = node.rightNode;
+        node = currentNode.leftNode;
+        [self balanceTreeWithNode:node];
     }
 }
 
