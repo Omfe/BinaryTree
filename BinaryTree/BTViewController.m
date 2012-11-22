@@ -101,7 +101,6 @@
     self.treeHeightTextLabel.text = [NSString stringWithFormat:@"%i", self.binaryTree.treeHeight];
     [self.treeGraphView setModelRoot:nil];
     [self.treeGraphView setModelRoot:self.binaryTree.rootNode];
-    //[self.treeGraphView parentClipViewDidResize:nil];
 }
 
 - (IBAction)iterateButtonWasPressed:(id)sender
