@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PSTreeGraphModelNode.h"
 
-@interface BTNode : NSObject
+@interface BTNode : NSObject <PSTreeGraphModelNode>
 
 @property (strong, nonatomic) BTNode *leftNode;
 @property (strong, nonatomic) BTNode *rightNode;

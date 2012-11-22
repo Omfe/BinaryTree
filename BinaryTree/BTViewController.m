@@ -8,10 +8,12 @@
 
 #import "BTViewController.h"
 #import "BTTree.h"
+#import "PSBaseTreeGraphView.h"
+#import "PSTreeGraphDelegate.h"
 
-@interface BTViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
+@interface BTViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, PSTreeGraphDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *treeGraphView;
+@property (weak, nonatomic) IBOutlet PSBaseTreeGraphView *treeGraphView;
 @property (weak, nonatomic) IBOutlet UITextField *nodeValueTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *iterateMethodPickerView;
 @property (weak, nonatomic) IBOutlet UITextView *iterateTextView;
@@ -30,6 +32,9 @@
 {
     [super viewDidLoad];
     self.binaryTree = [[BTTree alloc] init];
+    self.treeGraphView.treeGraphOrientation = PSTreeGraphOrientationStyleVertical;
+    self.treeGraphView.nodeViewNibName = @""; // MAKE A NIB. FILES OWNER: PSBaseSubtreeView. VIEW: BTNodeView
+    [self.treeGraphView setModelRoot:self.binaryTree.rootNode];
 }
 
 
@@ -70,6 +75,13 @@
         return NO;
     }
     return YES;
+}
+
+
+#pragma mark - PSTreeGraphDelegate Methods
+- (void)configureNodeView:(UIView *)nodeView withModelNode:(id<PSTreeGraphModelNode>)modelNode
+{
+    //
 }
 
 

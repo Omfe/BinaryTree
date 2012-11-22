@@ -16,6 +16,7 @@ typedef enum {
 
 @interface BTTree : NSObject
 
+@property (nonatomic, strong) BTNode *rootNode;
 @property (nonatomic, assign, readonly) NSInteger treeHeight;
 
 //- (id)initWithNodeValueType:(BTTreeNodeValueType)valueType;

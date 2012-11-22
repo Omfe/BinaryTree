@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4265F510165DB3BD0053EEA5 /* PSBaseBranchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4265F506165DB3BD0053EEA5 /* PSBaseBranchView.m */; };
+		4265F511165DB3BD0053EEA5 /* PSBaseLeafView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4265F508165DB3BD0053EEA5 /* PSBaseLeafView.m */; };
+		4265F512165DB3BD0053EEA5 /* PSBaseSubtreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4265F50A165DB3BD0053EEA5 /* PSBaseSubtreeView.m */; };
+		4265F513165DB3BD0053EEA5 /* PSBaseTreeGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4265F50C165DB3BD0053EEA5 /* PSBaseTreeGraphView.m */; };
 		99DF8AF51643048E00C26C37 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99DF8AF41643048E00C26C37 /* UIKit.framework */; };
 		99DF8AF71643048E00C26C37 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99DF8AF61643048E00C26C37 /* Foundation.framework */; };
 		99DF8AF91643048E00C26C37 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99DF8AF81643048E00C26C37 /* CoreGraphics.framework */; };
@@ -23,6 +27,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4265F505165DB3BD0053EEA5 /* PSBaseBranchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSBaseBranchView.h; sourceTree = "<group>"; };
+		4265F506165DB3BD0053EEA5 /* PSBaseBranchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSBaseBranchView.m; sourceTree = "<group>"; };
+		4265F507165DB3BD0053EEA5 /* PSBaseLeafView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSBaseLeafView.h; sourceTree = "<group>"; };
+		4265F508165DB3BD0053EEA5 /* PSBaseLeafView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSBaseLeafView.m; sourceTree = "<group>"; };
+		4265F509165DB3BD0053EEA5 /* PSBaseSubtreeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSBaseSubtreeView.h; sourceTree = "<group>"; };
+		4265F50A165DB3BD0053EEA5 /* PSBaseSubtreeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSBaseSubtreeView.m; sourceTree = "<group>"; };
+		4265F50B165DB3BD0053EEA5 /* PSBaseTreeGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSBaseTreeGraphView.h; sourceTree = "<group>"; };
+		4265F50C165DB3BD0053EEA5 /* PSBaseTreeGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSBaseTreeGraphView.m; sourceTree = "<group>"; };
+		4265F50D165DB3BD0053EEA5 /* PSBaseTreeGraphView_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSBaseTreeGraphView_Internal.h; sourceTree = "<group>"; };
+		4265F50E165DB3BD0053EEA5 /* PSTreeGraphDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTreeGraphDelegate.h; sourceTree = "<group>"; };
+		4265F50F165DB3BD0053EEA5 /* PSTreeGraphModelNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTreeGraphModelNode.h; sourceTree = "<group>"; };
 		99DF8AF01643048E00C26C37 /* BinaryTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BinaryTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99DF8AF41643048E00C26C37 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		99DF8AF61643048E00C26C37 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -59,6 +74,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4265F504165DB3BD0053EEA5 /* PSTreeGraphView */ = {
+			isa = PBXGroup;
+			children = (
+				4265F505165DB3BD0053EEA5 /* PSBaseBranchView.h */,
+				4265F506165DB3BD0053EEA5 /* PSBaseBranchView.m */,
+				4265F507165DB3BD0053EEA5 /* PSBaseLeafView.h */,
+				4265F508165DB3BD0053EEA5 /* PSBaseLeafView.m */,
+				4265F509165DB3BD0053EEA5 /* PSBaseSubtreeView.h */,
+				4265F50A165DB3BD0053EEA5 /* PSBaseSubtreeView.m */,
+				4265F50B165DB3BD0053EEA5 /* PSBaseTreeGraphView.h */,
+				4265F50C165DB3BD0053EEA5 /* PSBaseTreeGraphView.m */,
+				4265F50D165DB3BD0053EEA5 /* PSBaseTreeGraphView_Internal.h */,
+				4265F50E165DB3BD0053EEA5 /* PSTreeGraphDelegate.h */,
+				4265F50F165DB3BD0053EEA5 /* PSTreeGraphModelNode.h */,
+			);
+			path = PSTreeGraphView;
+			sourceTree = "<group>";
+		};
 		99DF8AE51643048E00C26C37 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +122,7 @@
 		99DF8AFA1643048E00C26C37 /* BinaryTree */ = {
 			isa = PBXGroup;
 			children = (
+				4265F504165DB3BD0053EEA5 /* PSTreeGraphView */,
 				99DF8B031643048E00C26C37 /* BTAppDelegate.h */,
 				99DF8B041643048E00C26C37 /* BTAppDelegate.m */,
 				99DF8B0C1643048E00C26C37 /* BTViewController.h */,
@@ -189,6 +223,10 @@
 				99DF8B0E1643048E00C26C37 /* BTViewController.m in Sources */,
 				99DF8B211643092A00C26C37 /* BTNode.m in Sources */,
 				99DF8B3E1646E36800C26C37 /* BTTree.m in Sources */,
+				4265F510165DB3BD0053EEA5 /* PSBaseBranchView.m in Sources */,
+				4265F511165DB3BD0053EEA5 /* PSBaseLeafView.m in Sources */,
+				4265F512165DB3BD0053EEA5 /* PSBaseSubtreeView.m in Sources */,
+				4265F513165DB3BD0053EEA5 /* PSBaseTreeGraphView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

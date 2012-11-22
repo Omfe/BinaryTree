@@ -11,7 +11,6 @@
 
 @interface BTTree ()
 
-@property (nonatomic, strong) BTNode *rootNode;
 @property (nonatomic, assign) BTTreeNodeValueType valueType;
 
 - (BTNode *)addNodeWithValue:(NSInteger)value withNode:(BTNode *)node;

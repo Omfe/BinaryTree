@@ -33,4 +33,15 @@
     }
 }
 
+#pragma mark - PSTreeGraphModelNode Properties
+- (id<PSTreeGraphModelNode>)parentModelNode
+{
+    return nil;
+}
+
+- (NSArray *)childModelNodes
+{
+    return [NSArray arrayWithObjects:self.leftNode, self.rightNode, nil];
+}
+
 @end
