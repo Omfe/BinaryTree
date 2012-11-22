@@ -177,12 +177,10 @@
         [self deleteAndMoveNode:node withParentNode:parentNode];
     } else if ((*node).value <= value) {
         tempNode = (*node).rightNode;
-        [self deleteNode:&tempNode withValue:value andParentNode:(*node)];
-        (*node).rightNode = tempNode;
+        [self deleteNode:&tempNode withValue:value andParentNode:*node];
     } else {
         tempNode = (*node).leftNode;
-        [self deleteNode:&tempNode withValue:value andParentNode:(*node)];
-        (*node).leftNode = tempNode;
+        [self deleteNode:&tempNode withValue:value andParentNode:*node];
     }
 }
 
@@ -194,9 +192,14 @@
         [self moveChildNode:(*node).leftNode toParentNode:parentNode fromNode:*node];
     } else if ((*node).rightNode && (*node).leftNode) {
         [self moveChildNode:nil toParentNode:parentNode fromNode:*node];
+    } else {
+        if (parentNode.leftNode == *node) {
+            parentNode.leftNode = nil;
+        } else {
+            parentNode.rightNode = nil;
+        }
+        *node = nil;
     }
-    
-    *node = nil;
 }
 
 - (void)moveChildNode:(BTNode *)childNode toParentNode:(BTNode *)parentNode fromNode:(BTNode *)node
@@ -209,39 +212,50 @@
     }
     
     if (parentNode && parentNode.leftNode == node) {
-        if (child) {
+        if (childNode) {
             parentNode.leftNode = childNode;
             return;
         }
         
         child = node.leftNode;
         grandChild = child.rightNode;
-        while (grandChild.rightNode) {
-            grandChild = grandChild.rightNode;
+        if (grandChild) {
+            while (grandChild.rightNode) {
+                grandChild = grandChild.rightNode;
+            }
+            
+            grandChild.parentNode.rightNode = nil;
+            parentNode.leftNode = grandChild;
+            grandChild.parentNode = parentNode;
+            grandChild.leftNode = child;
+            grandChild.rightNode = node.rightNode;
+        } else {
+            parentNode.leftNode = node.rightNode;
+            parentNode.leftNode.rightNode = node.leftNode;
         }
         
-        grandChild.parentNode.rightNode = nil;
-        parentNode.leftNode = grandChild;
-        grandChild.parentNode = parentNode;
-        grandChild.leftNode = child;
-        grandChild.rightNode = node.rightNode;
     } else {
-        if (child) {
+        if (childNode) {
             parentNode.rightNode = childNode;
             return;
         }
         
         child = node.rightNode;
         grandChild = child.leftNode;
-        while (grandChild.leftNode) {
-            grandChild = grandChild.leftNode;
+        if (grandChild) {
+            while (grandChild.leftNode) {
+                grandChild = grandChild.leftNode;
+            }
+            
+            grandChild.parentNode.leftNode = nil;
+            parentNode.rightNode = grandChild;
+            grandChild.parentNode = parentNode;
+            grandChild.rightNode = child;
+            grandChild.leftNode = node.leftNode;
+        } else {
+            parentNode.rightNode = node.leftNode;
+            parentNode.rightNode.rightNode = node.rightNode;
         }
-        
-        grandChild.parentNode.leftNode = nil;
-        parentNode.rightNode = grandChild;
-        grandChild.parentNode = parentNode;
-        grandChild.rightNode = child;
-        grandChild.leftNode = node.leftNode;
     }
 }
 
