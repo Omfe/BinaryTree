@@ -13,12 +13,12 @@
 
 @property (nonatomic, assign) BTTreeNodeValueType valueType;
 
-- (BTNode *)addNodeWithValue:(NSInteger)value withNode:(BTNode *)node;
+- (BTNode *)addNodeWithValue:(NSInteger)value withNode:(BTNode *)node andParentNode:(BTNode *)parentNode;
 - (NSString *)iterateInOrder:(BTNode *)currentNode;
 - (NSString *)iteratePreOrder:(BTNode *)currentNode;
 - (NSString *)iteratePostOrder:(BTNode *)currentNode;
 - (BOOL)nodeExists:(BTNode *)node withValue:(NSInteger)value;
-- (BOOL)deleteNode:(BTNode *)node withValue:(NSInteger)value andParentNode:(BTNode *)parentNode;
+- (void)deleteNode:(BTNode *)node withValue:(NSInteger)value andParentNode:(BTNode *)parentNode;
 - (void)deleteAndMoveNode:(BTNode *)node withParentNode:(BTNode *)parentNode;
 - (void)moveChildNode:(BTNode *)childNode toParentNode:(BTNode *)parentNode fromNode:(BTNode *)node;
 - (NSInteger)treeHeightWithNode:(BTNode *)node;
@@ -44,7 +44,7 @@
         return;
     }*/
     
-    _rootNode = [self addNodeWithValue:value withNode:self.rootNode];
+    _rootNode = [self addNodeWithValue:value withNode:self.rootNode andParentNode:nil];
     [self balanceTreeWithNode:self.rootNode];
     _treeHeight = [self treeHeightWithNode:self.rootNode];
 }
@@ -82,12 +82,12 @@
     }
 }
 
-- (BOOL)deleteNodeWithValue:(NSInteger)value
+- (void)deleteNodeWithValue:(NSInteger)value
 {
     if (![self nodeExistsWithValue:value]) {
-        return NO;
+        return;
     } else {
-        return [self deleteNode:self.rootNode withValue:value andParentNode:nil];
+        [self deleteNode:self.rootNode withValue:value andParentNode:nil];
     }
     
     [self balanceTreeWithNode:self.rootNode];
@@ -96,17 +96,17 @@
 
 
 #pragma mark - Private Methods
-- (BTNode *)addNodeWithValue:(NSInteger)value withNode:(BTNode *)node
+- (BTNode *)addNodeWithValue:(NSInteger)value withNode:(BTNode *)node andParentNode:(BTNode *)parentNode
 {
     if (node == nil) {
-        return [[BTNode alloc] initWithValue:value andParentNode:node];
+        return [[BTNode alloc] initWithValue:value andParentNode:parentNode];
     }
     
     if (node.value < value) {
-        node.rightNode = [self addNodeWithValue:value withNode:node.rightNode];
+        node.rightNode = [self addNodeWithValue:value withNode:node.rightNode andParentNode:node];
         return node;
     } else {
-        node.leftNode = [self addNodeWithValue:value withNode:node.leftNode];
+        node.leftNode = [self addNodeWithValue:value withNode:node.leftNode andParentNode:node];
         return node;
     }
 }
@@ -163,15 +163,16 @@
     }
 }
 
-- (BOOL)deleteNode:(BTNode *)node withValue:(NSInteger)value andParentNode:(BTNode *)parentNode
+
+
+- (void)deleteNode:(BTNode *)node withValue:(NSInteger)value andParentNode:(BTNode *)parentNode
 {
     if (node.value == value) {
         [self deleteAndMoveNode:node withParentNode:parentNode];
-        return YES;
     } else if (node.value <= value) {
-        return [self deleteNode:node.rightNode withValue:value andParentNode:node];
+        [self deleteNode:node.rightNode withValue:value andParentNode:node];
     } else {
-        return [self deleteNode:node.leftNode withValue:value andParentNode:node];
+        [self deleteNode:node.leftNode withValue:value andParentNode:node];
     }
 }
 
@@ -209,7 +210,9 @@
             grandChild = grandChild.rightNode;
         }
         
+        grandChild.parentNode.rightNode = nil;
         parentNode.leftNode = grandChild;
+        grandChild.parentNode = parentNode;
         grandChild.leftNode = child;
         grandChild.rightNode = node.rightNode;
     } else {
@@ -224,7 +227,9 @@
             grandChild = grandChild.leftNode;
         }
         
+        grandChild.parentNode.leftNode = nil;
         parentNode.rightNode = grandChild;
+        grandChild.parentNode = parentNode;
         grandChild.rightNode = child;
         grandChild.leftNode = node.leftNode;
     }

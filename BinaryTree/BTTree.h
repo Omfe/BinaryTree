@@ -25,6 +25,6 @@ typedef enum {
 - (NSString *)iteratePreOrder;
 - (NSString *)iteratePostOrder;
 - (BOOL)nodeExistsWithValue:(NSInteger)value;
-- (BOOL)deleteNodeWithValue:(NSInteger)value;
+- (void)deleteNodeWithValue:(NSInteger)value;
 
 @end
