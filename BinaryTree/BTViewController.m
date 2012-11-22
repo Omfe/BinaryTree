@@ -133,6 +133,12 @@
     }
 }
 
+- (IBAction)eraseButtonWasPressed:(id)sender
+{
+    [self.binaryTree deleteNodeWithValue:[self.nodeValueTextField.text integerValue]];
+    [self.treeGraphView setModelRoot:nil];
+    [self.treeGraphView setModelRoot:self.binaryTree.rootNode];
+}
 
 #pragma mark - Private Methods
 - (BOOL)isStringIntegerValue:(NSString *)string
