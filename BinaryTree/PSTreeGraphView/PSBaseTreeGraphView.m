@@ -787,7 +787,7 @@
     // Make TreeGraphs able to -canBecomeFirstResponder, so they can receive key events.
     return YES;
 }
-
+/*
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
@@ -799,7 +799,7 @@
 
     // Respond to touch and become first responder.
     [self becomeFirstResponder];
-}
+} */
 
 
 - (void) moveToSiblingByRelativeIndex:(NSInteger)relativeIndex
