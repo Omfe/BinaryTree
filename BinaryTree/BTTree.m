@@ -44,7 +44,7 @@
         return;
     }*/
     
-    self.rootNode = [self addNodeWithValue:value withNode:self.rootNode];
+    _rootNode = [self addNodeWithValue:value withNode:self.rootNode];
     [self balanceTreeWithNode:self.rootNode];
     _treeHeight = [self treeHeightWithNode:self.rootNode];
 }
@@ -99,7 +99,7 @@
 - (BTNode *)addNodeWithValue:(NSInteger)value withNode:(BTNode *)node
 {
     if (node == nil) {
-        return [[BTNode alloc] initWithValue:value];
+        return [[BTNode alloc] initWithValue:value andParentNode:node];
     }
     
     if (node.value < value) {
@@ -153,9 +153,9 @@
 - (BOOL)nodeExists:(BTNode *)node withValue:(NSInteger)value
 {
     if (node == nil) {
-        return false;
+        return NO;
     } else if (node.value == value) {
-        return true;
+        return YES;
     } else if (node.value <= value) {
         return [self nodeExists:node.rightNode withValue:value];
     } else {
@@ -258,14 +258,14 @@
     if (leftHeight >= rightHeight + 2) {
         currentNode = node.leftNode;
         node.leftNode = nil;
-        self.rootNode = currentNode;
+        _rootNode = currentNode;
         currentNode.rightNode = node;
     }
     
     if (rightHeight >= leftHeight + 2) {
         currentNode = node.rightNode;
         node.rightNode = nil;
-        self.rootNode = currentNode;
+        _rootNode = currentNode;
         currentNode.leftNode = node;
     }
 }

@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "PSTreeGraphModelNode.h"
 
-@interface BTNode : NSObject <PSTreeGraphModelNode>
+@interface BTNode : NSObject <PSTreeGraphModelNode, NSCopying>
 
 @property (strong, nonatomic) BTNode *leftNode;
 @property (strong, nonatomic) BTNode *rightNode;
+@property (strong, nonatomic) BTNode *parentNode;
 @property (assign, nonatomic) NSInteger value;
 
-- (id)initWithValue:(NSInteger)value;
+- (id)initWithValue:(NSInteger)value andParentNode:(BTNode *)parentNode;
 
 @end

@@ -8,40 +8,45 @@
 
 #import "BTNode.h"
 
-@interface BTNode ()
-
-@property (weak, nonatomic) IBOutlet UILabel *valueLabel;
-
-@end
-
 @implementation BTNode
 
-- (id)initWithValue:(NSInteger)value
+- (id)initWithValue:(NSInteger)value andParentNode:(BTNode *)parentNode
 {
     self = [super init];
     if (self) {
         self.value = value;
+        self.parentNode = parentNode;
     }
     return self;
 }
 
-- (void)setValue:(NSInteger)value
+
+#pragma mark - NSCopying Methods
+- (id)copyWithZone:(NSZone *)zone
 {
-    if (_value != value) {
-        _value = value;
-        self.valueLabel.text = [NSString stringWithFormat:@"%i", value];
-    }
+    return self;
 }
+
 
 #pragma mark - PSTreeGraphModelNode Properties
 - (id<PSTreeGraphModelNode>)parentModelNode
 {
-    return nil;
+    return self.parentNode;
 }
 
 - (NSArray *)childModelNodes
 {
-    return [NSArray arrayWithObjects:self.leftNode, self.rightNode, nil];
+    NSMutableArray *childNodes;
+    
+    childNodes = [NSMutableArray array];
+    if (self.rightNode) {
+        [childNodes addObject:self.rightNode];
+    }
+    if (self.leftNode) {
+        [childNodes addObject:self.leftNode];
+    }
+    
+    return childNodes;
 }
 
 @end

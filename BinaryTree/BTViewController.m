@@ -8,6 +8,8 @@
 
 #import "BTViewController.h"
 #import "BTTree.h"
+#import "BTNode.h"
+#import "BTNodeView.h"
 #import "PSBaseTreeGraphView.h"
 #import "PSTreeGraphDelegate.h"
 
@@ -32,9 +34,12 @@
 {
     [super viewDidLoad];
     self.binaryTree = [[BTTree alloc] init];
+    self.treeGraphView.backgroundColor = [UIColor whiteColor];
+    self.treeGraphView.connectingLineColor = [UIColor redColor];
     self.treeGraphView.treeGraphOrientation = PSTreeGraphOrientationStyleVertical;
-    self.treeGraphView.nodeViewNibName = @""; // MAKE A NIB. FILES OWNER: PSBaseSubtreeView. VIEW: BTNodeView
-    [self.treeGraphView setModelRoot:self.binaryTree.rootNode];
+    self.treeGraphView.connectingLineStyle = PSTreeGraphConnectingLineStyleDirect;
+    self.treeGraphView.nodeViewNibName = @"BTNodeView";
+    self.treeGraphView.delegate = self;
 }
 
 
@@ -81,7 +86,7 @@
 #pragma mark - PSTreeGraphDelegate Methods
 - (void)configureNodeView:(UIView *)nodeView withModelNode:(id<PSTreeGraphModelNode>)modelNode
 {
-    //
+    ((BTNodeView *)nodeView).valueLabel.text = [NSString stringWithFormat:@"%i", ((BTNode *)modelNode).value];
 }
 
 
@@ -94,6 +99,9 @@
     
     [self.binaryTree addNodeWithValue:[self.nodeValueTextField.text integerValue]];
     self.treeHeightTextLabel.text = [NSString stringWithFormat:@"%i", self.binaryTree.treeHeight];
+    [self.treeGraphView setModelRoot:nil];
+    [self.treeGraphView setModelRoot:self.binaryTree.rootNode];
+    //[self.treeGraphView parentClipViewDidResize:nil];
 }
 
 - (IBAction)iterateButtonWasPressed:(id)sender
