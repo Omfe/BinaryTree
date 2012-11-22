@@ -18,9 +18,14 @@
 - (NSString *)iteratePreOrder:(BTNode *)currentNode;
 - (NSString *)iteratePostOrder:(BTNode *)currentNode;
 - (BOOL)nodeExists:(BTNode *)node withValue:(NSInteger)value;
+<<<<<<< HEAD
+- (BOOL)deleteNode:(BTNode *)node withValue:(NSInteger)value andParent:(BTNode *)parent;
+- (void)deleteAndMoveNode:(BTNode *)node;
+=======
 - (BOOL)deleteNode:(BTNode *)node withValue:(NSInteger)value andParentNode:(BTNode *)parentNode;
 - (void)deleteAndMoveNode:(BTNode *)node withParentNode:(BTNode *)parentNode;
 - (void)moveChildNode:(BTNode *)childNode toParentNode:(BTNode *)parentNode fromNode:(BTNode *)node;
+>>>>>>> 93a41fd2e5568f7ba4c06ed96d1518b3fef27235
 - (NSInteger)treeHeightWithNode:(BTNode *)node;
 - (void)balanceTreeWithNode:(BTNode *)node;
 - (BOOL)isValueValidType:(id)value;
@@ -87,8 +92,14 @@
     if (![self nodeExistsWithValue:value]) {
         return NO;
     } else {
+<<<<<<< HEAD
+        return [self deleteNode:self.rootNode withValue:value andParent:nil];
+=======
         return [self deleteNode:self.rootNode withValue:value andParentNode:nil];
+>>>>>>> 93a41fd2e5568f7ba4c06ed96d1518b3fef27235
     }
+    
+    [self balanceTreeWithNode:self.rootNode];
 }
 
 
@@ -161,6 +172,17 @@
     }
 }
 
+<<<<<<< HEAD
+- (BOOL)deleteNode:(BTNode *)node withValue:(NSInteger)value andParent:(BTNode *)parent
+{
+    if (node.value == value) {
+        [self deleteAndMoveNode:node];
+        return YES;
+    } else if (node.value <= value) {
+        return [self deleteNode:node.rightNode withValue:value andParent:node];
+    } else {
+        return [self deleteNode:node.leftNode withValue:value andParent:node];
+=======
 - (BOOL)deleteNode:(BTNode *)node withValue:(NSInteger)value andParentNode:(BTNode *)parentNode
 {
     if (node.value == value) {
@@ -170,6 +192,7 @@
         return [self deleteNode:node.rightNode withValue:value andParentNode:node];
     } else {
         return [self deleteNode:node.leftNode withValue:value andParentNode:node];
+>>>>>>> 93a41fd2e5568f7ba4c06ed96d1518b3fef27235
     }
 }
 
@@ -258,6 +281,10 @@
         node.leftNode = nil;
         self.rootNode = currentNode;
         currentNode.rightNode = node;
+<<<<<<< HEAD
+       //[self balanceTreeWithNode:node];
+=======
+>>>>>>> 93a41fd2e5568f7ba4c06ed96d1518b3fef27235
     }
     
     if (rightHeight >= leftHeight + 2) {
@@ -265,6 +292,10 @@
         node.rightNode = nil;
         self.rootNode = currentNode;
         currentNode.leftNode = node;
+<<<<<<< HEAD
+        //[self balanceTreeWithNode:node];
+=======
+>>>>>>> 93a41fd2e5568f7ba4c06ed96d1518b3fef27235
     }
 }
 
