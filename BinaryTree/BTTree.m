@@ -18,8 +18,8 @@
 - (NSString *)iteratePreOrder:(BTNode *)currentNode;
 - (NSString *)iteratePostOrder:(BTNode *)currentNode;
 - (BOOL)nodeExists:(BTNode *)node withValue:(NSInteger)value;
-- (void)deleteNode:(BTNode *)node withValue:(NSInteger)value andParentNode:(BTNode *)parentNode;
-- (void)deleteAndMoveNode:(BTNode *)node withParentNode:(BTNode *)parentNode;
+- (void)deleteNode:(BTNode **)node withValue:(NSInteger)value andParentNode:(BTNode *)parentNode;
+- (void)deleteAndMoveNode:(BTNode **)node withParentNode:(BTNode *)parentNode;
 - (void)moveChildNode:(BTNode *)childNode toParentNode:(BTNode *)parentNode fromNode:(BTNode *)node;
 - (NSInteger)treeHeightWithNode:(BTNode *)node;
 - (void)balanceTreeWithNode:(BTNode *)node;
@@ -84,10 +84,14 @@
 
 - (void)deleteNodeWithValue:(NSInteger)value
 {
+    BTNode *node;
+    
     if (![self nodeExistsWithValue:value]) {
         return;
     } else {
-        [self deleteNode:self.rootNode withValue:value andParentNode:nil];
+        node = _rootNode;
+        [self deleteNode:&node withValue:value andParentNode:nil];
+        _rootNode = node;
     }
     
     [self balanceTreeWithNode:self.rootNode];
@@ -165,28 +169,34 @@
 
 
 
-- (void)deleteNode:(BTNode *)node withValue:(NSInteger)value andParentNode:(BTNode *)parentNode
+- (void)deleteNode:(BTNode **)node withValue:(NSInteger)value andParentNode:(BTNode *)parentNode
 {
-    if (node.value == value) {
+    BTNode *tempNode;
+    
+    if ((*node).value == value) {
         [self deleteAndMoveNode:node withParentNode:parentNode];
-    } else if (node.value <= value) {
-        [self deleteNode:node.rightNode withValue:value andParentNode:node];
+    } else if ((*node).value <= value) {
+        tempNode = (*node).rightNode;
+        [self deleteNode:&tempNode withValue:value andParentNode:(*node)];
+        (*node).rightNode = tempNode;
     } else {
-        [self deleteNode:node.leftNode withValue:value andParentNode:node];
+        tempNode = (*node).leftNode;
+        [self deleteNode:&tempNode withValue:value andParentNode:(*node)];
+        (*node).leftNode = tempNode;
     }
 }
 
-- (void)deleteAndMoveNode:(BTNode *)node withParentNode:(BTNode *)parentNode
+- (void)deleteAndMoveNode:(BTNode **)node withParentNode:(BTNode *)parentNode
 {
-    if (node.rightNode && !node.leftNode) {
-        [self moveChildNode:node.rightNode toParentNode:parentNode fromNode:node];
-    } else if (!node.rightNode && node.leftNode) {
-        [self moveChildNode:node.leftNode toParentNode:parentNode fromNode:node];
-    } else if (node.rightNode && node.leftNode) {
-        [self moveChildNode:nil toParentNode:parentNode fromNode:node];
+    if ((*node).rightNode && !(*node).leftNode) {
+        [self moveChildNode:(*node).rightNode toParentNode:parentNode fromNode:*node];
+    } else if (!(*node).rightNode && (*node).leftNode) {
+        [self moveChildNode:(*node).leftNode toParentNode:parentNode fromNode:*node];
+    } else if ((*node).rightNode && (*node).leftNode) {
+        [self moveChildNode:nil toParentNode:parentNode fromNode:*node];
     }
     
-    node = nil;
+    *node = nil;
 }
 
 - (void)moveChildNode:(BTNode *)childNode toParentNode:(BTNode *)parentNode fromNode:(BTNode *)node
