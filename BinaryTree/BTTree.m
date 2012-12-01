@@ -208,6 +208,10 @@
     BTNode *grandChild;
     
     if (!parentNode) {
+        if (childNode) {
+            //
+            return;
+        }
         return;
     }
     
